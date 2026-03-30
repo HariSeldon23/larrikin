@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, lazy, Suspense } from 'react';
 import Hero from './components/Hero';
 import ScenarioToggle from './components/ScenarioToggle';
 import CrisisCalculator from './components/CrisisCalculator/CrisisCalculator';
@@ -6,6 +6,8 @@ import OptionsComparison from './components/OptionsComparison/OptionsComparison'
 import CTASection from './components/CTA/CTASection';
 import SourcesCitations from './components/SourcesCitations';
 import About from './components/About';
+
+const StationMap = lazy(() => import('./components/StationMap/StationMap'));
 import { scenarios, DEFAULT_SCENARIO, type ScenarioKey } from './data/scenarios';
 import { personas, type PersonaKey, type FuelType } from './data/personas';
 import { useCrisisImpact } from './hooks/useCrisisImpact';
@@ -83,6 +85,14 @@ function App() {
           petrolPrice={petrolPrice}
           dieselPrice={dieselPrice}
         />
+      </div>
+
+      <div className="border-t border-border">
+        <Suspense fallback={
+          <div className="px-6 py-12 text-center text-text-muted">Loading map...</div>
+        }>
+          <StationMap />
+        </Suspense>
       </div>
 
       <div className="border-t border-border">
