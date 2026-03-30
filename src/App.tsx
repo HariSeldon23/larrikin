@@ -62,6 +62,10 @@ function App() {
       <Hero />
 
       <div className="border-t border-border">
+        <ScenarioToggle selected={scenario} onChange={setScenario} />
+      </div>
+
+      <div className="border-t border-border">
         <CrisisCalculator
           petrolPrice={petrolPrice}
           dieselPrice={dieselPrice}
@@ -79,10 +83,6 @@ function App() {
           petrolPrice={petrolPrice}
           dieselPrice={dieselPrice}
         />
-      </div>
-
-      <div className="border-t border-border">
-        <ScenarioToggle selected={scenario} onChange={setScenario} />
       </div>
 
       <div className="border-t border-border">

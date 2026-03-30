@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useOptionsComparison } from '../../hooks/useOptionsComparison';
 import type { PersonaKey, FuelType } from '../../data/personas';
 import OptionCard from './OptionCard';
@@ -27,6 +28,13 @@ export default function OptionsComparison({
   const statusQuoAnnualCost = statusQuo?.annualFuelCost ?? 0;
   const nonStatusQuoOptions = options.filter((o) => o.key !== 'status-quo');
 
+  // Find the best option (highest annual saving among viable)
+  const bestOptionKey = useMemo(() => {
+    const viable = nonStatusQuoOptions.filter((o) => o.annualSaving > 0);
+    if (viable.length === 0) return null;
+    return viable.reduce((a, b) => (a.annualSaving > b.annualSaving ? a : b)).key;
+  }, [nonStatusQuoOptions]);
+
   return (
     <section className="px-6 py-12 md:px-12" id="options">
       <div className="max-w-3xl mx-auto">
@@ -38,19 +46,25 @@ export default function OptionsComparison({
         </p>
 
         {/* Option cards */}
-        <div className={`grid gap-4 mb-8 ${
+        <div className={`grid gap-5 mb-8 pt-2 ${
           options.length === 3 ? 'grid-cols-1 md:grid-cols-3' :
           options.length === 2 ? 'grid-cols-1 md:grid-cols-2' :
           'grid-cols-1'
         }`}>
-          {options.map((opt) => (
-            <OptionCard key={opt.key} option={opt} statusQuoAnnualCost={statusQuoAnnualCost} />
+          {options.map((opt, i) => (
+            <OptionCard
+              key={opt.key}
+              option={opt}
+              statusQuoAnnualCost={statusQuoAnnualCost}
+              isBest={opt.key === bestOptionKey}
+              index={i}
+            />
           ))}
         </div>
 
-        {/* J-Curve chart */}
+        {/* J-Curve chart — breaks out of container for full width */}
         {nonStatusQuoOptions.length > 0 && (
-          <div>
+          <div className="mt-4">
             <h3 className="font-heading text-lg font-bold uppercase tracking-tight mb-1">
               36-Month Net Position
             </h3>
@@ -58,21 +72,6 @@ export default function OptionsComparison({
               Cumulative savings vs status quo. Above $0 = you're ahead.
             </p>
             <JCurveChart options={options} />
-
-            {/* Payback callouts */}
-            <div className="flex flex-wrap gap-4 mt-4">
-              {nonStatusQuoOptions.map((opt) => (
-                opt.monthsToPayback > 0 && (
-                  <div key={opt.key} className="text-sm">
-                    <span className="inline-block w-3 h-3 rounded-full mr-1.5" style={{ backgroundColor: opt.color }} />
-                    <span className="text-text-muted">
-                      {opt.label} pays for itself in{' '}
-                      <span className="text-text-primary font-bold">Month {opt.monthsToPayback}</span>
-                    </span>
-                  </div>
-                )
-              ))}
-            </div>
           </div>
         )}
       </div>

@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
+import { useCountUp } from '../hooks/useCountUp';
 
 export default function Hero() {
+  const counter = useCountUp(78, 2000);
+
   return (
     <section className="min-h-screen flex flex-col justify-center px-6 py-16 md:px-12">
       <motion.div
@@ -20,7 +23,12 @@ export default function Hero() {
             transition={{ delay: 0.2, duration: 0.4 }}
           >
             Diesel has risen{' '}
-            <span className="text-crisis-red font-bold font-heading text-2xl md:text-3xl">78%</span>{' '}
+            <span
+              ref={counter.ref as React.RefObject<HTMLSpanElement>}
+              className="text-crisis-red font-bold font-heading text-5xl md:text-7xl inline-block tabular-nums"
+            >
+              {counter.value}%
+            </span>{' '}
             in 21 days.
           </motion.p>
           <motion.p
