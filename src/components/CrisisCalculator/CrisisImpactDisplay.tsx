@@ -11,6 +11,7 @@ interface Props {
 
 export default function CrisisImpactDisplay({ impact, persona }: Props) {
   const isHousehold = persona === 'household';
+  const isFleet = ['construction', 'agriculture', 'courier'].includes(persona);
   const weeklyAmount = isHousehold ? impact.totalWeeklyImpact : impact.weeklyCrisisPremium;
   const weeklyCounter = useCountUp(Math.round(weeklyAmount), 1200);
 
@@ -24,7 +25,7 @@ export default function CrisisImpactDisplay({ impact, persona }: Props) {
       {/* The giant number */}
       <div className="text-center py-8 mb-6">
         <div className="text-xs uppercase tracking-[0.2em] text-text-muted mb-3">
-          {isHousehold ? 'Your total weekly crisis impact' : 'The crisis is costing you'}
+          {isHousehold ? 'Your total weekly crisis impact' : isFleet ? 'The crisis is costing your fleet' : 'The crisis is costing you'}
         </div>
         <div
           ref={weeklyCounter.ref as React.RefObject<HTMLDivElement>}
@@ -36,7 +37,9 @@ export default function CrisisImpactDisplay({ impact, persona }: Props) {
           every week
         </div>
         <p className="text-sm text-text-muted mt-4 max-w-md mx-auto">
-          That you didn't pay before February. Because of a war 12,000km away.
+          {isFleet
+            ? 'Extra fleet fuel cost since February. Every dollar comes off your margin.'
+            : 'That you didn\'t pay before February. Because of a war 12,000km away.'}
         </p>
       </div>
 

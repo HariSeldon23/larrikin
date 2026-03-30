@@ -28,11 +28,11 @@ export default function OptionsComparison({
   const statusQuoAnnualCost = statusQuo?.annualFuelCost ?? 0;
   const nonStatusQuoOptions = options.filter((o) => o.key !== 'status-quo');
 
-  // Find the best option (highest annual saving among viable)
+  // Find the best option (best 3-year net position among viable)
   const bestOptionKey = useMemo(() => {
     const viable = nonStatusQuoOptions.filter((o) => o.annualSaving > 0);
     if (viable.length === 0) return null;
-    return viable.reduce((a, b) => (a.annualSaving > b.annualSaving ? a : b)).key;
+    return viable.reduce((a, b) => (a.netPositionYear3 > b.netPositionYear3 ? a : b)).key;
   }, [nonStatusQuoOptions]);
 
   return (

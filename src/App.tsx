@@ -53,11 +53,11 @@ function App() {
     dieselPrice,
   );
 
-  // Best non-status-quo option (highest annual saving)
+  // Best non-status-quo option (best 3-year net position)
   const bestOption = useMemo(() => {
     const viable = options.filter((o) => o.key !== 'status-quo' && o.annualSaving > 0);
     if (viable.length === 0) return null;
-    return viable.reduce((a, b) => (a.annualSaving > b.annualSaving ? a : b));
+    return viable.reduce((a, b) => (a.netPositionYear3 > b.netPositionYear3 ? a : b));
   }, [options]);
 
   return (

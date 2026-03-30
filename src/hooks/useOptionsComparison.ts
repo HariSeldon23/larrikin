@@ -5,6 +5,9 @@ import {
   LPG_CONVERSION_CAR,
   LPG_CONVERSION_UTE,
   LPG_CONVERSION_PRIME_MOVER,
+  LPG_CONVERSION_FLEET_5_UTES,
+  LPG_CONVERSION_FARM_FLEET,
+  LPG_CONVERSION_COURIER_FLEET,
   EV_KWH_PER_100KM,
   EV_COST_PER_KWH_HOME,
   EV_PURCHASE_PRACTICAL,
@@ -96,6 +99,9 @@ export function useOptionsComparison(
     if (showLPG) {
       const lpgConversionCost =
         persona === 'truckie' ? LPG_CONVERSION_PRIME_MOVER :
+        persona === 'construction' ? LPG_CONVERSION_FLEET_5_UTES :
+        persona === 'agriculture' ? LPG_CONVERSION_FARM_FLEET :
+        persona === 'courier' ? LPG_CONVERSION_COURIER_FLEET :
         persona === 'tradie' ? LPG_CONVERSION_UTE :
         LPG_CONVERSION_CAR;
 
@@ -110,6 +116,9 @@ export function useOptionsComparison(
       options.push({
         key: 'lpg',
         label: persona === 'truckie' ? 'Convert to LPG ($20k)' :
+               persona === 'construction' ? 'Convert Fleet to LPG ($20k)' :
+               persona === 'agriculture' ? 'Convert Farm Fleet to LPG ($8k)' :
+               persona === 'courier' ? 'Convert Fleet to LPG ($7.5k)' :
                persona === 'tradie' ? 'Convert to LPG ($4k)' :
                'Convert to LPG ($2.5k)',
         upfrontCost: lpgConversionCost,
@@ -119,14 +128,20 @@ export function useOptionsComparison(
         netPositionYear1: lpgAnnualSaving - lpgConversionCost,
         netPositionYear3: lpgAnnualSaving * 3 - lpgConversionCost,
         netPositionYear5: lpgAnnualSaving * 5 - lpgConversionCost,
-        caveats: LPG_CAVEATS,
+        caveats: persona === 'construction'
+          ? [...LPG_CAVEATS, 'Fleet conversion requires 1–2 weeks downtime per vehicle', 'Vehicles need staggered conversion to keep fleet operational']
+          : persona === 'agriculture'
+          ? [...LPG_CAVEATS, 'LPG station access is limited in regional/rural areas', 'Tractors and machinery cannot be converted — only road vehicles']
+          : persona === 'courier'
+          ? [...LPG_CAVEATS, 'High-km fleets wear LPG components faster — budget for servicing', 'Stagger conversions to keep deliveries running']
+          : LPG_CAVEATS,
         color: '#d97706',
         monthlyData: buildMonthlyData(lpgMonthlySaving, lpgConversionCost, 36),
       });
     }
 
     // --- EV Option ---
-    const showEV = persona !== 'truckie'; // No electric prime movers
+    const showEV = persona !== 'truckie' && persona !== 'construction' && persona !== 'agriculture' && persona !== 'courier'; // No fleet replacement personas
     if (showEV) {
       const evPurchasePrice = persona === 'tradie' ? EV_PURCHASE_UTE : EV_PURCHASE_PRACTICAL;
       const evUpfront = evPurchasePrice - currentVehicleValue + EV_HOME_CHARGER_INSTALL;

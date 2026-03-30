@@ -1,4 +1,4 @@
-export type PersonaKey = 'commuter' | 'tradie' | 'truckie' | 'household';
+export type PersonaKey = 'commuter' | 'tradie' | 'truckie' | 'construction' | 'agriculture' | 'courier' | 'household';
 export type FuelType = 'petrol' | 'diesel';
 
 export interface PersonaDefaults {
@@ -43,6 +43,36 @@ export const personas: Record<PersonaKey, PersonaDefaults> = {
     fuelType: 'diesel',
     currentVehicleValue: 0,
   },
+  construction: {
+    key: 'construction',
+    label: 'Construction',
+    subtitle: '5-ute fleet, diesel, site-to-site',
+    icon: '🏗️',
+    kmPerYear: 150000,    // 5 utes × 30,000 km/yr
+    fuelEconomy: 12,      // L/100km — loaded utes, stop-start site driving
+    fuelType: 'diesel',
+    currentVehicleValue: 125000,  // 5 utes avg $25k each
+  },
+  agriculture: {
+    key: 'agriculture',
+    label: 'Farmer',
+    subtitle: '2 utes + tractor & machinery diesel',
+    icon: '🌾',
+    kmPerYear: 60000,       // 2 utes × 25k km + ~10k km-equivalent machinery hours
+    fuelEconomy: 14,        // L/100km — utes on dirt roads + heavy equipment blended
+    fuelType: 'diesel',
+    currentVehicleValue: 60000,   // 2 utes avg $30k each
+  },
+  courier: {
+    key: 'courier',
+    label: 'Courier',
+    subtitle: '3-van delivery fleet, metro routes',
+    icon: '📦',
+    kmPerYear: 120000,      // 3 vans × 40,000 km/yr — last-mile delivery
+    fuelEconomy: 10,        // L/100km — loaded vans, constant stop-start
+    fuelType: 'petrol',
+    currentVehicleValue: 45000,   // 3 vans avg $15k each
+  },
   household: {
     key: 'household',
     label: 'Household',
@@ -55,4 +85,4 @@ export const personas: Record<PersonaKey, PersonaDefaults> = {
   },
 };
 
-export const personaOrder: PersonaKey[] = ['commuter', 'tradie', 'truckie', 'household'];
+export const personaOrder: PersonaKey[] = ['commuter', 'tradie', 'truckie', 'construction', 'agriculture', 'courier', 'household'];

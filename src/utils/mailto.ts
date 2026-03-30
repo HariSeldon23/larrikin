@@ -24,9 +24,22 @@ export function generateEmail(
   policyDemands.push(`Mandate 90-day fuel reserve compliance — Australia has been non-compliant since 2012`);
 
   // Persona-specific demands
-  if (persona === 'truckie' || persona === 'tradie') {
+  const isCommercial = ['truckie', 'tradie', 'construction', 'agriculture', 'courier'].includes(persona);
+  if (isCommercial) {
     policyDemands.push('Emergency LPG conversion rebates for commercial vehicles — there is no electric alternative for freight');
     policyDemands.push('Federal investment in Autogas refuelling infrastructure');
+  }
+  if (persona === 'construction') {
+    policyDemands.push('Fuel surcharge caps on government construction contracts so small builders aren\'t crushed by cost pass-through');
+    policyDemands.push('Accelerated depreciation for fleet LPG conversions to reduce upfront burden on construction firms');
+  }
+  if (persona === 'agriculture') {
+    policyDemands.push('Emergency diesel rebate increase for primary producers — food security depends on it');
+    policyDemands.push('Expand the Fuel Tax Credits scheme to cover LPG conversion costs for farming vehicles');
+  }
+  if (persona === 'courier') {
+    policyDemands.push('Small business fuel relief grants for delivery and logistics operators');
+    policyDemands.push('Accelerated depreciation for fleet LPG conversions to reduce upfront burden on small operators');
   }
   if (persona === 'commuter' || persona === 'household') {
     policyDemands.push('Reinstate EV purchase rebates — every state has let theirs expire');
