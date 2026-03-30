@@ -1,0 +1,144 @@
+{
+  "_meta": {
+    "lastUpdated": "2026-03-30",
+    "source": "AEC Electorate Finder + aph.gov.au 48th Parliament",
+    "notes": "Seed data — expand with full AEC postcode-electorate mapping"
+  },
+  "2000": {
+    "electorates": [
+      { "electorate": "Sydney", "mp": "Tanya Plibersek", "party": "ALP", "email": "tanya.plibersek.mp@aph.gov.au" }
+    ]
+  },
+  "2010": {
+    "electorates": [
+      { "electorate": "Sydney", "mp": "Tanya Plibersek", "party": "ALP", "email": "tanya.plibersek.mp@aph.gov.au" }
+    ]
+  },
+  "2060": {
+    "electorates": [
+      { "electorate": "North Sydney", "mp": "Kylea Tink", "party": "IND", "email": "kylea.tink.mp@aph.gov.au" }
+    ]
+  },
+  "2170": {
+    "electorates": [
+      { "electorate": "Werriwa", "mp": "Anne Stanley", "party": "ALP", "email": "anne.stanley.mp@aph.gov.au" }
+    ]
+  },
+  "3000": {
+    "electorates": [
+      { "electorate": "Melbourne", "mp": "Adam Bandt", "party": "GRN", "email": "adam.bandt.mp@aph.gov.au" }
+    ]
+  },
+  "3053": {
+    "electorates": [
+      { "electorate": "Melbourne", "mp": "Adam Bandt", "party": "GRN", "email": "adam.bandt.mp@aph.gov.au" }
+    ]
+  },
+  "3350": {
+    "electorates": [
+      { "electorate": "Ballarat", "mp": "Catherine King", "party": "ALP", "email": "catherine.king.mp@aph.gov.au" }
+    ]
+  },
+  "4000": {
+    "electorates": [
+      { "electorate": "Blair", "mp": "Shayne Neumann", "party": "ALP", "email": "shayne.neumann.mp@aph.gov.au" }
+    ]
+  },
+  "4101": {
+    "electorates": [
+      { "electorate": "Griffith", "mp": "Terri Butler", "party": "ALP", "email": "terri.butler.mp@aph.gov.au" }
+    ]
+  },
+  "4209": {
+    "electorates": [
+      { "electorate": "Fadden", "mp": "Stuart Robert", "party": "LNP", "email": "stuart.robert.mp@aph.gov.au" },
+      { "electorate": "McPherson", "mp": "Karen Andrews", "party": "LNP", "email": "karen.andrews.mp@aph.gov.au" }
+    ]
+  },
+  "4210": {
+    "electorates": [
+      { "electorate": "Fadden", "mp": "Stuart Robert", "party": "LNP", "email": "stuart.robert.mp@aph.gov.au" }
+    ]
+  },
+  "4211": {
+    "electorates": [
+      { "electorate": "McPherson", "mp": "Karen Andrews", "party": "LNP", "email": "karen.andrews.mp@aph.gov.au" }
+    ]
+  },
+  "4212": {
+    "electorates": [
+      { "electorate": "Fadden", "mp": "Stuart Robert", "party": "LNP", "email": "stuart.robert.mp@aph.gov.au" }
+    ]
+  },
+  "4213": {
+    "electorates": [
+      { "electorate": "Fadden", "mp": "Stuart Robert", "party": "LNP", "email": "stuart.robert.mp@aph.gov.au" }
+    ]
+  },
+  "4214": {
+    "electorates": [
+      { "electorate": "Moncrieff", "mp": "Angie Bell", "party": "LNP", "email": "angie.bell.mp@aph.gov.au" }
+    ]
+  },
+  "4215": {
+    "electorates": [
+      { "electorate": "Moncrieff", "mp": "Angie Bell", "party": "LNP", "email": "angie.bell.mp@aph.gov.au" }
+    ]
+  },
+  "4216": {
+    "electorates": [
+      { "electorate": "Moncrieff", "mp": "Angie Bell", "party": "LNP", "email": "angie.bell.mp@aph.gov.au" }
+    ]
+  },
+  "4217": {
+    "electorates": [
+      { "electorate": "Moncrieff", "mp": "Angie Bell", "party": "LNP", "email": "angie.bell.mp@aph.gov.au" }
+    ]
+  },
+  "4218": {
+    "electorates": [
+      { "electorate": "Moncrieff", "mp": "Angie Bell", "party": "LNP", "email": "angie.bell.mp@aph.gov.au" },
+      { "electorate": "McPherson", "mp": "Karen Andrews", "party": "LNP", "email": "karen.andrews.mp@aph.gov.au" }
+    ]
+  },
+  "4220": {
+    "electorates": [
+      { "electorate": "McPherson", "mp": "Karen Andrews", "party": "LNP", "email": "karen.andrews.mp@aph.gov.au" }
+    ]
+  },
+  "4221": {
+    "electorates": [
+      { "electorate": "McPherson", "mp": "Karen Andrews", "party": "LNP", "email": "karen.andrews.mp@aph.gov.au" }
+    ]
+  },
+  "4226": {
+    "electorates": [
+      { "electorate": "Moncrieff", "mp": "Angie Bell", "party": "LNP", "email": "angie.bell.mp@aph.gov.au" }
+    ]
+  },
+  "5000": {
+    "electorates": [
+      { "electorate": "Adelaide", "mp": "Steve Georganas", "party": "ALP", "email": "steve.georganas.mp@aph.gov.au" }
+    ]
+  },
+  "6000": {
+    "electorates": [
+      { "electorate": "Perth", "mp": "Patrick Gorman", "party": "ALP", "email": "patrick.gorman.mp@aph.gov.au" }
+    ]
+  },
+  "7000": {
+    "electorates": [
+      { "electorate": "Clark", "mp": "Andrew Wilkie", "party": "IND", "email": "andrew.wilkie.mp@aph.gov.au" }
+    ]
+  },
+  "2600": {
+    "electorates": [
+      { "electorate": "Canberra", "mp": "Alicia Payne", "party": "ALP", "email": "alicia.payne.mp@aph.gov.au" }
+    ]
+  },
+  "0800": {
+    "electorates": [
+      { "electorate": "Solomon", "mp": "Luke Gosling", "party": "ALP", "email": "luke.gosling.mp@aph.gov.au" }
+    ]
+  }
+}
