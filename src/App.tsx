@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import ScenarioToggle from './components/ScenarioToggle';
 import CrisisCalculator from './components/CrisisCalculator/CrisisCalculator';
 import OptionsComparison from './components/OptionsComparison/OptionsComparison';
+import ConversionGuide from './components/ConversionGuide/ConversionGuide';
 import CTASection from './components/CTA/CTASection';
 import SourcesCitations from './components/SourcesCitations';
 import About from './components/About';
@@ -85,6 +86,10 @@ function App() {
           petrolPrice={petrolPrice}
           dieselPrice={dieselPrice}
         />
+      </div>
+
+      <div className="border-t border-border">
+        <ConversionGuide />
       </div>
 
       <div className="border-t border-border">
