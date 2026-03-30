@@ -77,7 +77,10 @@ Regards,
   return { subject, body };
 }
 
-export function buildMailtoUrl(
+export type EmailClient = 'gmail' | 'outlook';
+
+export function buildEmailUrl(
+  client: EmailClient,
   mp: MPData,
   persona: PersonaKey,
   crisisImpact: CrisisImpactResult,
@@ -85,5 +88,11 @@ export function buildMailtoUrl(
   postcode: string,
 ): string {
   const { subject, body } = generateEmail(mp, persona, crisisImpact, bestOption, postcode);
-  return `mailto:${mp.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  if (client === 'gmail') {
+    return `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(mp.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
+  // Outlook web
+  return `https://outlook.live.com/mail/0/deeplink/compose?to=${encodeURIComponent(mp.email)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
